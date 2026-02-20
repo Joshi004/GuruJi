@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, useState, useEffect, useRef } from 'react';
 import MenuItem from './MenuItem';
 
 function Callout({ text }) {
@@ -18,7 +18,7 @@ function ComboCallout({ callout }) {
           <p className="text-xs font-bold text-red-700 uppercase tracking-wide">{callout.text}</p>
           <p className="mt-0.5 text-xs text-stone-500">{callout.description}</p>
         </div>
-        <span className="flex-shrink-0 text-sm font-bold text-red-700">₹{callout.price}</span>
+        <span className="flex-shrink-0 w-14 text-right text-sm font-bold text-red-700 tabular-nums">₹{callout.price}</span>
       </div>
     </div>
   );
@@ -40,16 +40,42 @@ function SubsectionBlock({ sub }) {
 
 const MenuSection = forwardRef(function MenuSection({ category }, ref) {
   const hasSubsections = Boolean(category.subsections);
+  const [isVisible, setIsVisible] = useState(false);
+  const innerRef = useRef(null);
+
+  useEffect(() => {
+    const el = innerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section ref={ref} id={category.id} className="scroll-mt-20">
+    <section
+      ref={(el) => {
+        innerRef.current = el;
+        if (typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      id={category.id}
+      className={`scroll-mt-20 ${isVisible ? 'section-visible' : 'section-hidden'}`}
+    >
       {/* Section header */}
       <div className="px-4 pt-5 pb-2 flex items-center gap-3">
         <span className="text-2xl" role="img" aria-label={category.name}>
           {category.icon}
         </span>
         <div>
-          <h2 className="text-lg font-extrabold text-stone-900 leading-tight">
+          <h2 className="text-lg font-extrabold text-stone-900 leading-tight" style={{ fontFamily: 'var(--font-family-display)' }}>
             {category.fullName || category.name}
           </h2>
           {category.subtitle && (

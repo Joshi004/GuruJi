@@ -17,6 +17,12 @@ export default function MenuItem({ item }) {
               🌶️
             </span>
           )}
+
+          {item.popular && (
+            <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-400 text-amber-900 leading-none tracking-wide uppercase">
+              Popular
+            </span>
+          )}
         </div>
 
         {/* Sub-note (e.g. "Onion, Cupsicum, Tomato") */}
@@ -32,8 +38,8 @@ export default function MenuItem({ item }) {
         )}
       </div>
 
-      {/* Price */}
-      <span className="flex-shrink-0 text-sm font-bold text-red-700 tabular-nums">
+      {/* Price — fixed width, right-aligned, tabular numerals */}
+      <span className="flex-shrink-0 w-14 text-right text-sm font-bold text-red-700 tabular-nums">
         ₹{item.price}
       </span>
     </div>
