@@ -22,6 +22,7 @@ export default function App() {
     }
   });
   const sectionRefs = useRef({});
+  const scrollContainerRef = useRef(null);
   const isManualScrolling = useRef(false);
   const manualScrollTimer = useRef(null);
 
@@ -55,6 +56,7 @@ export default function App() {
           }
         },
         {
+          root: scrollContainerRef.current,
           rootMargin: '-30% 0px -60% 0px',
           threshold: 0,
         }
@@ -121,58 +123,64 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#fdf6ec]">
+    <div className="h-dvh bg-[#fdf6ec] overflow-hidden">
       {/* Constrain to mobile-width on large screens */}
-      <div className="max-w-lg mx-auto bg-[#fdf6ec] min-h-screen shadow-2xl relative">
-        <Header />
+      <div className="max-w-lg mx-auto bg-[#fdf6ec] h-full shadow-2xl relative">
+        {/* Inner scroll container — immune to Chrome's dynamic URL bar interference */}
+        <div
+          ref={scrollContainerRef}
+          className="h-full overflow-y-auto scroll-smooth overscroll-contain"
+        >
+          <Header />
 
-        <CategoryNav activeId={activeId} onTabClick={handleTabClick} />
+          <CategoryNav activeId={activeId} onTabClick={handleTabClick} />
 
-        <SearchBar query={searchQuery} onChange={setSearchQuery} />
+          <SearchBar query={searchQuery} onChange={setSearchQuery} />
 
-        <main className="pb-4">
-          {searchQuery.trim() ? (
-            // Search results view
-            <div className="mx-4 mt-3">
-              {searchResults.length === 0 ? (
-                <div className="text-center py-12 text-stone-400">
-                  <p className="text-4xl mb-2">🔍</p>
-                  <p className="text-sm font-medium">No items found for "{searchQuery}"</p>
-                </div>
-              ) : (
-                <>
-                  <p className="text-xs text-stone-400 mb-2 font-medium">
-                    {searchResults.length} result{searchResults.length !== 1 ? 's' : ''}
-                  </p>
-                  <div className="bg-white rounded-2xl shadow-sm border border-stone-100 px-4 py-1">
-                    {searchResults.map((item, i) => (
-                      <div key={i}>
-                        <p className="text-xs text-orange-500 font-semibold mt-2 -mb-1">{item._category}</p>
-                        <MenuItem item={item} />
-                      </div>
-                    ))}
+          <main className="pb-4">
+            {searchQuery.trim() ? (
+              // Search results view
+              <div className="mx-4 mt-3">
+                {searchResults.length === 0 ? (
+                  <div className="text-center py-12 text-stone-400">
+                    <p className="text-4xl mb-2">🔍</p>
+                    <p className="text-sm font-medium">No items found for "{searchQuery}"</p>
                   </div>
-                </>
-              )}
-            </div>
-          ) : (
-            // Normal menu view
-            liveMenu.map((category) => (
-              <MenuSection
-                key={category.id}
-                category={category}
-                collapsed={!!collapsedSections[category.id]}
-                onToggle={() => toggleSection(category.id)}
-                ref={(el) => { sectionRefs.current[category.id] = el; }}
-              />
-            ))
-          )}
-        </main>
+                ) : (
+                  <>
+                    <p className="text-xs text-stone-400 mb-2 font-medium">
+                      {searchResults.length} result{searchResults.length !== 1 ? 's' : ''}
+                    </p>
+                    <div className="bg-white rounded-2xl shadow-sm border border-stone-100 px-4 py-1">
+                      {searchResults.map((item, i) => (
+                        <div key={i}>
+                          <p className="text-xs text-orange-500 font-semibold mt-2 -mb-1">{item._category}</p>
+                          <MenuItem item={item} />
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+            ) : (
+              // Normal menu view
+              liveMenu.map((category) => (
+                <MenuSection
+                  key={category.id}
+                  category={category}
+                  collapsed={!!collapsedSections[category.id]}
+                  onToggle={() => toggleSection(category.id)}
+                  ref={(el) => { sectionRefs.current[category.id] = el; }}
+                />
+              ))
+            )}
+          </main>
 
-        <Footer />
+          <Footer />
+        </div>
       </div>
 
-      <BackToTop />
+      <BackToTop scrollContainerRef={scrollContainerRef} />
     </div>
   );
 }
