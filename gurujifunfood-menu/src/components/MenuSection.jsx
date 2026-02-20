@@ -1,5 +1,6 @@
 import { forwardRef, useState, useEffect, useRef } from 'react';
 import MenuItem from './MenuItem';
+import { checkAvailability } from '../data/menuData';
 
 function Callout({ text }) {
   return (
@@ -38,10 +39,25 @@ function SubsectionBlock({ sub }) {
   );
 }
 
-const MenuSection = forwardRef(function MenuSection({ category }, ref) {
+function AvailabilityBanner({ label }) {
+  return (
+    <div className="mx-4 mb-1 flex items-center gap-1.5 text-stone-400">
+      <svg className="w-3 h-3 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <polyline points="12 6 12 12 16 14" />
+      </svg>
+      <span className="text-xs font-medium">{label}</span>
+    </div>
+  );
+}
+
+const MenuSection = forwardRef(function MenuSection({ category, collapsed, onToggle }, ref) {
   const hasSubsections = Boolean(category.subsections);
   const [isVisible, setIsVisible] = useState(false);
   const innerRef = useRef(null);
+
+  const availability = checkAvailability(category.availabilityStart, category.availabilityEnd);
+  const isUnavailable = !availability.available;
 
   useEffect(() => {
     const el = innerRef.current;
@@ -69,12 +85,18 @@ const MenuSection = forwardRef(function MenuSection({ category }, ref) {
       id={category.id}
       className={`scroll-mt-20 ${isVisible ? 'section-visible' : 'section-hidden'}`}
     >
-      {/* Section header */}
-      <div className="px-4 pt-5 pb-2 flex items-center gap-3">
+      {/* Section header — clickable to collapse/expand */}
+      <button
+        type="button"
+        onClick={onToggle}
+        className="w-full text-left px-4 pt-5 pb-2 flex items-center gap-3 focus:outline-none"
+        aria-expanded={!collapsed}
+        aria-controls={`section-content-${category.id}`}
+      >
         <span className="text-2xl" role="img" aria-label={category.name}>
           {category.icon}
         </span>
-        <div>
+        <div className="flex-1 min-w-0">
           <h2 className="text-lg font-extrabold text-stone-900 leading-tight" style={{ fontFamily: 'var(--font-family-display)' }}>
             {category.fullName || category.name}
           </h2>
@@ -83,23 +105,46 @@ const MenuSection = forwardRef(function MenuSection({ category }, ref) {
           )}
         </div>
         {/* Accent bar */}
-        <div className="ml-auto h-1 w-8 rounded-full bg-gradient-to-r from-red-600 to-orange-400" />
-      </div>
+        <div className="h-1 w-8 rounded-full bg-gradient-to-r from-red-600 to-orange-400 flex-shrink-0" />
+        {/* Chevron */}
+        <svg
+          className={`w-4 h-4 text-stone-400 flex-shrink-0 transition-transform duration-300 ${collapsed ? '' : 'rotate-180'}`}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polyline points="18 15 12 9 6 15" />
+        </svg>
+      </button>
 
-      {/* Content card */}
-      <div className="mx-4 mb-2 bg-white rounded-2xl shadow-sm border border-stone-100 px-4 py-1">
-        {hasSubsections ? (
-          category.subsections.map((sub, i) => (
-            <SubsectionBlock key={i} sub={sub} />
-          ))
-        ) : (
-          category.items.map((item, i) => (
-            <MenuItem key={i} item={item} />
-          ))
-        )}
+      {/* Availability banner — shown outside the collapsible so it's always visible */}
+      {isUnavailable && <AvailabilityBanner label={availability.label} />}
 
-        {/* Section-level callout (e.g. SI Rice combo) */}
-        {category.callout && <ComboCallout callout={category.callout} />}
+      {/* Collapsible content */}
+      <div
+        id={`section-content-${category.id}`}
+        className={`section-content${collapsed ? ' collapsed' : ''}`}
+      >
+        <div>
+          {/* Content card */}
+          <div className={`mx-4 mb-2 bg-white rounded-2xl shadow-sm border border-stone-100 px-4 py-1 transition-opacity duration-300 ${isUnavailable ? 'opacity-60' : 'opacity-100'}`}>
+            {hasSubsections ? (
+              category.subsections.map((sub, i) => (
+                <SubsectionBlock key={i} sub={sub} />
+              ))
+            ) : (
+              category.items.map((item, i) => (
+                <MenuItem key={i} item={item} />
+              ))
+            )}
+
+            {/* Section-level callout (e.g. SI Rice combo) */}
+            {category.callout && <ComboCallout callout={category.callout} />}
+          </div>
+        </div>
       </div>
     </section>
   );

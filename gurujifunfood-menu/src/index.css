@@ -40,6 +40,24 @@ body {
   animation: fadeInUp 0.4s ease-out both;
 }
 
+/* Collapsible section — CSS grid trick for smooth height animation */
+.section-content {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.3s ease, opacity 0.25s ease;
+  opacity: 1;
+}
+
+.section-content.collapsed {
+  grid-template-rows: 0fr;
+  opacity: 0;
+}
+
+/* The immediate child must hide overflow for the height animation to work */
+.section-content > div {
+  overflow: hidden;
+}
+
 /* Custom scrollbar for category nav */
 .nav-scroll::-webkit-scrollbar {
   display: none;

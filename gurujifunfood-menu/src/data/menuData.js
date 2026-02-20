@@ -4,6 +4,8 @@ export const menuData = [
     name: "Breakfast",
     icon: "🍳",
     subtitle: "Served 8:30 AM – 11:00 Noon",
+    availabilityStart: "08:30",
+    availabilityEnd: "11:00",
     items: [
       { name: "Aloo Paratha with Curd", qty: "2 Pc.", price: 100, popular: true },
       { name: "Pyaaz Paratha", qty: "2 Pc.", price: 100 },
@@ -27,12 +29,12 @@ export const menuData = [
       { name: "Black Tea", price: 20 },
       { name: "Black Coffee", price: 20 },
       { name: "Coffee", price: 30 },
-      { name: "Cold Coffee", price: 80, popular: true },
+      { name: "Cold Coffee", price: 80, popular: true, offerPrice: 70 },
       { name: "Cold Coffee with Ice Cream", price: 100 },
       { name: "Plain Butter Milk (Chhachh)", price: 20 },
       { name: "Masala Butter Milk (Chhachh)", price: 30 },
       { name: "Sweet Lassi", price: 70, popular: true },
-      { name: "Banana Shake", price: 100 },
+      { name: "Banana Shake", price: 100, offerPrice: 80 },
       { name: "Chocolate Shake", price: 80 },
     ],
   },
@@ -235,14 +237,44 @@ export const menuData = [
 // ---------------------------------------------------------------------------
 // Google Sheets CSV integration
 //
-// CSV columns (row 1 = header):
+// CSV columns (row 1 = header) — ordered for easy editing:
+//   item_name, price, offer_price, qty,
+//   availability_start, availability_end, popular, spicy, note,
 //   category_id, category_name, category_icon, category_subtitle,
-//   subsection, item_name, qty, price, spicy, note, callout
+//   subsection, callout
 //
 // Paste your published sheet URL below after setting up the sheet.
 // Leave as empty string to always use the static fallback above.
 // ---------------------------------------------------------------------------
 export const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSfXJuTFoWBTDX71_GtjIBmxIL9vuwL_wAWcoY8BYXv5Xk6EXBcdPaGiWjS_4I0351b5nZ63mwI6FgF/pub?gid=0&single=true&output=csv';
+
+// ---------------------------------------------------------------------------
+// Availability helpers — used by MenuSection and MenuItem
+// ---------------------------------------------------------------------------
+
+/**
+ * Returns { available: true } when the current time is within [start, end],
+ * or { available: false, label: "Available H:MM AM – H:MM PM" } when outside.
+ * Returns { available: true } when start/end are not provided.
+ */
+export function checkAvailability(start, end) {
+  if (!start || !end) return { available: true };
+  const now = new Date();
+  const nowMins = now.getHours() * 60 + now.getMinutes();
+  const [sh, sm] = start.split(':').map(Number);
+  const [eh, em] = end.split(':').map(Number);
+  const startMins = sh * 60 + sm;
+  const endMins = eh * 60 + em;
+  if (nowMins >= startMins && nowMins < endMins) return { available: true };
+  return { available: false, label: `Available ${formatTime(start)} – ${formatTime(end)}` };
+}
+
+function formatTime(t) {
+  const [h, m] = t.split(':').map(Number);
+  const suffix = h >= 12 ? 'PM' : 'AM';
+  const h12 = h % 12 || 12;
+  return m === 0 ? `${h12} ${suffix}` : `${h12}:${m.toString().padStart(2, '0')} ${suffix}`;
+}
 
 /**
  * Parses an array of CSV row objects (keyed by header name) into the
@@ -261,7 +293,6 @@ export function parseSheetRows(rows) {
         name: row.category_name?.trim() || id,
         icon: row.category_icon?.trim() || '',
         subtitle: row.category_subtitle?.trim() || undefined,
-        // subsections keyed by title, built up as we go
         _subsectionMap: new Map(),
         items: [],
       });
@@ -270,16 +301,24 @@ export function parseSheetRows(rows) {
     const cat = categoryMap.get(id);
     const subsectionTitle = row.subsection?.trim();
 
+    const availabilityStart = row.availability_start?.trim() || undefined;
+    const availabilityEnd = row.availability_end?.trim() || undefined;
+    const offerPriceRaw = Number(row.offer_price);
+    const price = Number(row.price) || 0;
+
     const item = {
       name: row.item_name?.trim(),
-      price: Number(row.price) || 0,
+      price,
       spicy: row.spicy?.trim().toLowerCase() === 'true',
       popular: row.popular?.trim().toLowerCase() === 'true',
       qty: row.qty?.trim() || undefined,
       note: row.note?.trim() || undefined,
+      availabilityStart,
+      availabilityEnd,
+      // Only attach offerPrice if it is a valid number less than the regular price
+      offerPrice: (offerPriceRaw > 0 && offerPriceRaw < price) ? offerPriceRaw : undefined,
     };
 
-    // Remove undefined keys so components don't receive empty props
     Object.keys(item).forEach((k) => item[k] === undefined && delete item[k]);
 
     if (subsectionTitle) {
@@ -291,23 +330,39 @@ export function parseSheetRows(rows) {
       cat.items.push(item);
     }
 
-    // Handle section-level callout encoded as "text|description|price"
-    // stored on the last row of a category in the callout column
     const calloutRaw = row.callout?.trim();
     if (calloutRaw && calloutRaw.includes('|')) {
-      const [text, description, price] = calloutRaw.split('|');
-      cat.callout = { type: 'combo', text, description, price: Number(price) };
+      const [text, description, calloutPrice] = calloutRaw.split('|');
+      cat.callout = { type: 'combo', text, description, price: Number(calloutPrice) };
     } else if (calloutRaw && !calloutRaw.includes('|')) {
-      // Subsection-level plain text callout (e.g. "Add Extra Cheese @ ₹ 40")
       if (subsectionTitle && cat._subsectionMap.has(subsectionTitle)) {
         cat._subsectionMap.get(subsectionTitle).callout = calloutRaw;
       }
     }
   });
 
-  // Convert map to final array, attach subsections or items
   return Array.from(categoryMap.values()).map((cat) => {
     const { _subsectionMap, ...rest } = cat;
+
+    // Determine all items across subsections + direct items
+    const allSubItems = Array.from(_subsectionMap.values()).flatMap((s) => s.items);
+    const allItems = [...rest.items, ...allSubItems];
+
+    // Promote availability to category level when every item shares the same window
+    const itemsWithAvail = allItems.filter((i) => i.availabilityStart && i.availabilityEnd);
+    if (itemsWithAvail.length > 0 && itemsWithAvail.length === allItems.length) {
+      const firstKey = `${itemsWithAvail[0].availabilityStart}-${itemsWithAvail[0].availabilityEnd}`;
+      const allSame = itemsWithAvail.every(
+        (i) => `${i.availabilityStart}-${i.availabilityEnd}` === firstKey
+      );
+      if (allSame) {
+        rest.availabilityStart = itemsWithAvail[0].availabilityStart;
+        rest.availabilityEnd = itemsWithAvail[0].availabilityEnd;
+        // Remove from individual items — the section-level indicator covers them
+        allItems.forEach((i) => { delete i.availabilityStart; delete i.availabilityEnd; });
+      }
+    }
+
     if (_subsectionMap.size > 0) {
       return { ...rest, subsections: Array.from(_subsectionMap.values()) };
     }

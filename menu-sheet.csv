@@ -1,120 +1,120 @@
-category_id,category_name,category_icon,category_subtitle,subsection,item_name,qty,price,spicy,note,callout,popular
-breakfast,Breakfast,🍳,Served 8:30 AM – 11:00 Noon,,Aloo Paratha with Curd,2 Pc.,100,false,,, true
-breakfast,Breakfast,🍳,Served 8:30 AM – 11:00 Noon,,Pyaaz Paratha,2 Pc.,100,false,,,false
-breakfast,Breakfast,🍳,Served 8:30 AM – 11:00 Noon,,Gobhi Paratha,2 Pc.,100,false,,,false
-breakfast,Breakfast,🍳,Served 8:30 AM – 11:00 Noon,,Aloo Pyaaz Paratha,2 Pc.,110,false,,,false
-breakfast,Breakfast,🍳,Served 8:30 AM – 11:00 Noon,,Aloo Gobhi Paratha,2 Pc.,110,false,,,false
-breakfast,Breakfast,🍳,Served 8:30 AM – 11:00 Noon,,Paneer Paratha,2 Pc.,130,false,,,true
-breakfast,Breakfast,🍳,Served 8:30 AM – 11:00 Noon,,Puri Bhaji,4 Pc.,100,false,,,false
-drinks,Drinks,☕,Hot & Cold,,Tea,,20,false,,,false
-drinks,Drinks,☕,Hot & Cold,,Masala Tea,,30,false,,,true
-drinks,Drinks,☕,Hot & Cold,,Dudh (Milk),,50,false,,,false
-drinks,Drinks,☕,Hot & Cold,,Lemon Tea,,25,false,,,false
-drinks,Drinks,☕,Hot & Cold,,Black Tea,,20,false,,,false
-drinks,Drinks,☕,Hot & Cold,,Black Coffee,,20,false,,,false
-drinks,Drinks,☕,Hot & Cold,,Coffee,,30,false,,,false
-drinks,Drinks,☕,Hot & Cold,,Cold Coffee,,80,false,,,true
-drinks,Drinks,☕,Hot & Cold,,Cold Coffee with Ice Cream,,100,false,,,false
-drinks,Drinks,☕,Hot & Cold,,Plain Butter Milk (Chhachh),,20,false,,,false
-drinks,Drinks,☕,Hot & Cold,,Masala Butter Milk (Chhachh),,30,false,,,false
-drinks,Drinks,☕,Hot & Cold,,Sweet Lassi,,70,false,,,true
-drinks,Drinks,☕,Hot & Cold,,Banana Shake,,100,false,,,false
-drinks,Drinks,☕,Hot & Cold,,Chocolate Shake,,80,false,,,false
-toast,Toast,🍞,,,Plain Toast,,50,false,,,false
-toast,Toast,🍞,,,Bread Butter,,70,false,,,false
-toast,Toast,🍞,,,Jam Bread,,70,false,,,false
-toast,Toast,🍞,,,Butter Toast,,90,false,,,false
-toast,Toast,🍞,,,Cheese Tomato Toast,,130,false,,,true
-toast,Toast,🍞,,,Aloo Masala Toast,,100,false,,,false
-toast,Toast,🍞,,,Paneer Masala Toast,,150,false,,,false
-toast,Toast,🍞,,,Paneer Masala Cheese Toast,,170,false,,,false
-sandwich,Sandwich,🥪,,,Vegetable Sandwich,,70,false,,,false
-sandwich,Sandwich,🥪,,,Vegetable Cheese Sandwich,,100,false,,,false
-sandwich,Sandwich,🥪,,,Cheese Sandwich,,90,false,,,false
-sandwich,Sandwich,🥪,,,Club Sandwich,,150,false,,,false
-sandwich,Sandwich,🥪,,,Vegetable Grilled Sandwich,,100,false,,,false
-sandwich,Sandwich,🥪,,,Cheese Grilled Sandwich,,120,false,,,false
-sandwich,Sandwich,🥪,,,Vegetable Cheese Grilled Sandwich,,130,false,,,false
-sandwich,Sandwich,🥪,,,Club Grilled Sandwich,,200,false,,,true
-chinese,Chinese,🍜,,Noodles & Fried Rice,Vegetable Noodle,,110,false,,,false
-chinese,Chinese,🍜,,Noodles & Fried Rice,Vegetable Paneer Noodle,,160,false,,,false
-chinese,Chinese,🍜,,Noodles & Fried Rice,Schezwan Noodle,,130,true,,,false
-chinese,Chinese,🍜,,Noodles & Fried Rice,Hakka Noodle,,170,false,,,true
-chinese,Chinese,🍜,,Noodles & Fried Rice,Singaporean Noodle,,180,false,,,false
-chinese,Chinese,🍜,,Noodles & Fried Rice,Vegetable Fried Rice,,120,false,,,false
-chinese,Chinese,🍜,,Noodles & Fried Rice,Vegetable Paneer Fried Rice,,170,false,,,false
-chinese,Chinese,🍜,,Noodles & Fried Rice,Schezwan Fried Rice,,140,true,,,false
-chinese,Chinese,🍜,,Noodles & Fried Rice,Mushroom Fried Rice,,150,false,,,false
-chinese,Chinese,🍜,,Noodles & Fried Rice,Mushroom Paneer Fried Rice,,200,false,,,false
-chinese,Chinese,🍜,,Noodles & Fried Rice,Vegetable Fried Rice + Manchurian,,200,false,,,false
-chinese,Chinese,🍜,,Noodles & Fried Rice,Vegetable Manchurian (Dry),,150,false,,,false
-chinese,Chinese,🍜,,Noodles & Fried Rice,Vegetable Manchurian (Gravy),,170,false,,,false
-chinese,Chinese,🍜,,Noodles & Fried Rice,Vegetable Spring Roll,,110,false,,,false
-chinese,Chinese,🍜,,Starters & Sides,Chilli Paneer (Dry),,200,false,,,true
-chinese,Chinese,🍜,,Starters & Sides,Chilli Paneer (Gravy),,220,false,,,false
-chinese,Chinese,🍜,,Starters & Sides,Chilli Potato,,160,false,,,false
-chinese,Chinese,🍜,,Starters & Sides,Honey Chilli Potato,,200,false,,,true
-chinese,Chinese,🍜,,Starters & Sides,Vegetable Crispy,,170,false,,,false
-south-indian,South Indian,🫓,,Dosa,Plain Dosa,,80,false,,,false
-south-indian,South Indian,🫓,,Dosa,Ghee Dosa,,150,false,,,false
-south-indian,South Indian,🫓,,Dosa,Ghee Podi Dosa,,180,false,,,false
-south-indian,South Indian,🫓,,Dosa,Plain Butter Dosa,,90,false,,,false
-south-indian,South Indian,🫓,,Dosa,Paper Plain Dosa,,120,false,,,false
-south-indian,South Indian,🫓,,Dosa,Paper Plain Butter Dosa,,130,false,,,false
-south-indian,South Indian,🫓,,Dosa,Mysore Plain Dosa,,100,true,,,false
-south-indian,South Indian,🫓,,Dosa,Mysore Plain Butter Dosa,,110,true,,,false
-south-indian,South Indian,🫓,,Dosa,Cheese Dosa (Processed Cheese),,150,false,,,false
-south-indian,South Indian,🫓,,Dosa,Cheese Butter Dosa,,160,false,,,false
-south-indian,South Indian,🫓,,Dosa,Cheese Masala Dosa,,190,false,,,false
-south-indian,South Indian,🫓,,Dosa,Cheese Butter Masala Dosa,,200,false,,,true
-south-indian,South Indian,🫓,,Dosa,Masala Dosa,,120,false,,,true
-south-indian,South Indian,🫓,,Dosa,Ghee Podi Masala Dosa,,210,false,,,false
-south-indian,South Indian,🫓,,Dosa,Butter Masala Dosa,,130,false,,,false
-south-indian,South Indian,🫓,,Dosa,Paneer Masala Dosa,,150,false,,,false
-south-indian,South Indian,🫓,,Dosa,Paneer Butter Masala Dosa,,160,false,,,false
-south-indian,South Indian,🫓,,Dosa,Onion Dosa,,120,false,,,false
-south-indian,South Indian,🫓,,Dosa,Onion Butter Dosa,,130,false,,,false
-south-indian,South Indian,🫓,,Dosa,Onion Masala Dosa,,150,false,,,false
-south-indian,South Indian,🫓,,Dosa,Onion Butter Masala Dosa,,160,false,,,false
-south-indian,South Indian,🫓,,Dosa,Onion Paneer Masala Dosa,,190,false,,,false
-south-indian,South Indian,🫓,,Dosa,Onion Butter Paneer Masala Dosa,,200,false,,,false
-south-indian,South Indian,🫓,,Dosa,Paneer Dosa,,220,false,,,false
-south-indian,South Indian,🫓,,Dosa,Paneer Butter Dosa,,230,false,,,false
-south-indian,South Indian,🫓,,Dosa,Mysore Masala Dosa,,130,true,,,true
-south-indian,South Indian,🫓,,Dosa,Mysore Butter Masala Dosa,,140,true,,,false
-south-indian,South Indian,🫓,,Dosa,Mysore Onion Masala Dosa,,170,true,,,false
-south-indian,South Indian,🫓,,Dosa,Mysore Onion Butter Masala Dosa,,180,true,,,false
-south-indian,South Indian,🫓,,Dosa,Mysore Paneer Dosa,,240,true,,,false
-south-indian,South Indian,🫓,,Dosa,Mysore Paneer Butter Dosa,,250,true,,,false
-uttappam,Uttappam,🥞,,,Plain Uttappam,,80,false,,,false
-uttappam,Uttappam,🥞,,,Onion Uttappam,,110,false,,,false
-uttappam,Uttappam,🥞,,,Tomato Uttappam,,110,false,,,false
-uttappam,Uttappam,🥞,,,Cupsicum Uttappam,,110,false,,,false
-uttappam,Uttappam,🥞,,,Onion Tomato Uttappam,,130,false,,,false
-uttappam,Uttappam,🥞,,,Vegetable Uttappam,,140,false,Onion,,false
-uttappam,Uttappam,🥞,,,Vegetable Paneer Uttappam,,180,false,,,false
-uttappam,Uttappam,🥞,,,Paneer Uttappam,,200,false,,,false
-uttappam,Uttappam,🥞,,,Mushroom Uttappam,,140,false,,,false
-uttappam,Uttappam,🥞,,,Corn Uttappam,,160,false,,,false
-idli-vada,Idli & Vada,🍚,,,Idli Sambhar,2 Pcs.,80,false,,,false
-idli-vada,Idli & Vada,🍚,,,Ghee Podi Idli,,120,false,,,false
-idli-vada,Idli & Vada,🍚,,,Fried Idli,2 Pcs.,100,false,,,false
-idli-vada,Idli & Vada,🍚,,,Vada Sambhar,2 Pcs.,100,false,,,false
-south-indian-rice,SI Rice,🍛,South Indian Rice,,Sambhar Rice,,120,false,,,false
-south-indian-rice,SI Rice,🍛,South Indian Rice,,Curd Rice (Thayir Sadam),,140,false,,South Indian Combo|1 Mini Dosa + 1 Mini Uttappam + 1 Pc. Idli + 1 Pc. Vada|240,false
-pizza-burger,Pizza & Burger,🍕,,Burgers,Vegetable Burger,,60,false,,,false
-pizza-burger,Pizza & Burger,🍕,,Burgers,Cheese Burger,,90,false,,,false
-pizza-burger,Pizza & Burger,🍕,,Pizza,Vegetable Pizza,,170,false,Onion; Cupsicum; Tomato,,false
-pizza-burger,Pizza & Burger,🍕,,Pizza,Onion Pizza,,150,false,,,false
-pizza-burger,Pizza & Burger,🍕,,Pizza,Tomato Pizza,,150,false,,,false
-pizza-burger,Pizza & Burger,🍕,,Pizza,Capsicum Pizza,,150,false,,,false
-pizza-burger,Pizza & Burger,🍕,,Pizza,Margherita Pizza,,170,false,,,true
-pizza-burger,Pizza & Burger,🍕,,Pizza,Italian Pizza,,200,false,,,false
-pizza-burger,Pizza & Burger,🍕,,Pizza,Paneer Pizza,,230,false,,,false
-pizza-burger,Pizza & Burger,🍕,,Pizza,Corn Pizza,,200,false,,,false
-pizza-burger,Pizza & Burger,🍕,,Pizza,Corn Vegetable Pizza,,220,false,,,false
-pizza-burger,Pizza & Burger,🍕,,Pizza,Mushroom Pizza,,200,false,,,false
-pizza-burger,Pizza & Burger,🍕,,Pizza,Mushroom Vegetable Pizza,,220,false,,Add Extra Cheese @ ₹ 40,false
-snacks,Snacks,🍟,,,French Fries,,110,false,,,false
-snacks,Snacks,🍟,,,Pav Bhaji,,100,false,,,true
-snacks,Snacks,🍟,,,Extra Pav,,20,false,,,false
+item_name,price,offer_price,qty,availability_start,availability_end,popular,spicy,note,category_id,category_name,category_icon,category_subtitle,subsection,callout
+Aloo Paratha with Curd,100,,2 Pc.,08:30,11:00, true,false,,breakfast,Breakfast,🍳,Served 8:30 AM – 11:00 Noon,,
+Pyaaz Paratha,100,,2 Pc.,08:30,11:00,false,false,,breakfast,Breakfast,🍳,Served 8:30 AM – 11:00 Noon,,
+Gobhi Paratha,100,,2 Pc.,08:30,11:00,false,false,,breakfast,Breakfast,🍳,Served 8:30 AM – 11:00 Noon,,
+Aloo Pyaaz Paratha,110,,2 Pc.,08:30,11:00,false,false,,breakfast,Breakfast,🍳,Served 8:30 AM – 11:00 Noon,,
+Aloo Gobhi Paratha,110,,2 Pc.,08:30,11:00,false,false,,breakfast,Breakfast,🍳,Served 8:30 AM – 11:00 Noon,,
+Paneer Paratha,130,,2 Pc.,08:30,11:00,true,false,,breakfast,Breakfast,🍳,Served 8:30 AM – 11:00 Noon,,
+Puri Bhaji,100,,4 Pc.,08:30,11:00,false,false,,breakfast,Breakfast,🍳,Served 8:30 AM – 11:00 Noon,,
+Tea,20,,,,,false,false,,drinks,Drinks,☕,Hot & Cold,,
+Masala Tea,30,,,,,true,false,,drinks,Drinks,☕,Hot & Cold,,
+Dudh (Milk),50,,,,,false,false,,drinks,Drinks,☕,Hot & Cold,,
+Lemon Tea,25,,,,,false,false,,drinks,Drinks,☕,Hot & Cold,,
+Black Tea,20,,,,,false,false,,drinks,Drinks,☕,Hot & Cold,,
+Black Coffee,20,,,,,false,false,,drinks,Drinks,☕,Hot & Cold,,
+Coffee,30,,,,,false,false,,drinks,Drinks,☕,Hot & Cold,,
+Cold Coffee,80,70,,,,true,false,,drinks,Drinks,☕,Hot & Cold,,
+Cold Coffee with Ice Cream,100,,,,,false,false,,drinks,Drinks,☕,Hot & Cold,,
+Plain Butter Milk (Chhachh),20,,,,,false,false,,drinks,Drinks,☕,Hot & Cold,,
+Masala Butter Milk (Chhachh),30,,,,,false,false,,drinks,Drinks,☕,Hot & Cold,,
+Sweet Lassi,70,,,,,true,false,,drinks,Drinks,☕,Hot & Cold,,
+Banana Shake,100,80,,,,false,false,,drinks,Drinks,☕,Hot & Cold,,
+Chocolate Shake,80,,,,,false,false,,drinks,Drinks,☕,Hot & Cold,,
+Plain Toast,50,,,,,false,false,,toast,Toast,🍞,,,
+Bread Butter,70,,,,,false,false,,toast,Toast,🍞,,,
+Jam Bread,70,,,,,false,false,,toast,Toast,🍞,,,
+Butter Toast,90,,,,,false,false,,toast,Toast,🍞,,,
+Cheese Tomato Toast,130,,,,,true,false,,toast,Toast,🍞,,,
+Aloo Masala Toast,100,,,,,false,false,,toast,Toast,🍞,,,
+Paneer Masala Toast,150,,,,,false,false,,toast,Toast,🍞,,,
+Paneer Masala Cheese Toast,170,,,,,false,false,,toast,Toast,🍞,,,
+Vegetable Sandwich,70,,,,,false,false,,sandwich,Sandwich,🥪,,,
+Vegetable Cheese Sandwich,100,,,,,false,false,,sandwich,Sandwich,🥪,,,
+Cheese Sandwich,90,,,,,false,false,,sandwich,Sandwich,🥪,,,
+Club Sandwich,150,,,,,false,false,,sandwich,Sandwich,🥪,,,
+Vegetable Grilled Sandwich,100,,,,,false,false,,sandwich,Sandwich,🥪,,,
+Cheese Grilled Sandwich,120,,,,,false,false,,sandwich,Sandwich,🥪,,,
+Vegetable Cheese Grilled Sandwich,130,,,,,false,false,,sandwich,Sandwich,🥪,,,
+Club Grilled Sandwich,200,,,,,true,false,,sandwich,Sandwich,🥪,,,
+Vegetable Noodle,110,,,,,false,false,,chinese,Chinese,🍜,,Noodles & Fried Rice,
+Vegetable Paneer Noodle,160,,,,,false,false,,chinese,Chinese,🍜,,Noodles & Fried Rice,
+Schezwan Noodle,130,,,,,false,true,,chinese,Chinese,🍜,,Noodles & Fried Rice,
+Hakka Noodle,170,,,,,true,false,,chinese,Chinese,🍜,,Noodles & Fried Rice,
+Singaporean Noodle,180,,,,,false,false,,chinese,Chinese,🍜,,Noodles & Fried Rice,
+Vegetable Fried Rice,120,,,,,false,false,,chinese,Chinese,🍜,,Noodles & Fried Rice,
+Vegetable Paneer Fried Rice,170,,,,,false,false,,chinese,Chinese,🍜,,Noodles & Fried Rice,
+Schezwan Fried Rice,140,,,,,false,true,,chinese,Chinese,🍜,,Noodles & Fried Rice,
+Mushroom Fried Rice,150,,,,,false,false,,chinese,Chinese,🍜,,Noodles & Fried Rice,
+Mushroom Paneer Fried Rice,200,,,,,false,false,,chinese,Chinese,🍜,,Noodles & Fried Rice,
+Vegetable Fried Rice + Manchurian,200,,,,,false,false,,chinese,Chinese,🍜,,Noodles & Fried Rice,
+Vegetable Manchurian (Dry),150,,,,,false,false,,chinese,Chinese,🍜,,Noodles & Fried Rice,
+Vegetable Manchurian (Gravy),170,,,,,false,false,,chinese,Chinese,🍜,,Noodles & Fried Rice,
+Vegetable Spring Roll,110,,,,,false,false,,chinese,Chinese,🍜,,Noodles & Fried Rice,
+Chilli Paneer (Dry),200,,,,,true,false,,chinese,Chinese,🍜,,Starters & Sides,
+Chilli Paneer (Gravy),220,,,,,false,false,,chinese,Chinese,🍜,,Starters & Sides,
+Chilli Potato,160,,,,,false,false,,chinese,Chinese,🍜,,Starters & Sides,
+Honey Chilli Potato,200,,,,,true,false,,chinese,Chinese,🍜,,Starters & Sides,
+Vegetable Crispy,170,,,,,false,false,,chinese,Chinese,🍜,,Starters & Sides,
+Plain Dosa,80,,,,,false,false,,south-indian,South Indian,🫓,,Dosa,
+Ghee Dosa,150,,,,,false,false,,south-indian,South Indian,🫓,,Dosa,
+Ghee Podi Dosa,180,,,,,false,false,,south-indian,South Indian,🫓,,Dosa,
+Plain Butter Dosa,90,,,,,false,false,,south-indian,South Indian,🫓,,Dosa,
+Paper Plain Dosa,120,,,,,false,false,,south-indian,South Indian,🫓,,Dosa,
+Paper Plain Butter Dosa,130,,,,,false,false,,south-indian,South Indian,🫓,,Dosa,
+Mysore Plain Dosa,100,,,,,false,true,,south-indian,South Indian,🫓,,Dosa,
+Mysore Plain Butter Dosa,110,,,,,false,true,,south-indian,South Indian,🫓,,Dosa,
+Cheese Dosa (Processed Cheese),150,,,,,false,false,,south-indian,South Indian,🫓,,Dosa,
+Cheese Butter Dosa,160,,,,,false,false,,south-indian,South Indian,🫓,,Dosa,
+Cheese Masala Dosa,190,,,,,false,false,,south-indian,South Indian,🫓,,Dosa,
+Cheese Butter Masala Dosa,200,,,,,true,false,,south-indian,South Indian,🫓,,Dosa,
+Masala Dosa,120,,,,,true,false,,south-indian,South Indian,🫓,,Dosa,
+Ghee Podi Masala Dosa,210,,,,,false,false,,south-indian,South Indian,🫓,,Dosa,
+Butter Masala Dosa,130,,,,,false,false,,south-indian,South Indian,🫓,,Dosa,
+Paneer Masala Dosa,150,,,,,false,false,,south-indian,South Indian,🫓,,Dosa,
+Paneer Butter Masala Dosa,160,,,,,false,false,,south-indian,South Indian,🫓,,Dosa,
+Onion Dosa,120,,,,,false,false,,south-indian,South Indian,🫓,,Dosa,
+Onion Butter Dosa,130,,,,,false,false,,south-indian,South Indian,🫓,,Dosa,
+Onion Masala Dosa,150,,,,,false,false,,south-indian,South Indian,🫓,,Dosa,
+Onion Butter Masala Dosa,160,,,,,false,false,,south-indian,South Indian,🫓,,Dosa,
+Onion Paneer Masala Dosa,190,,,,,false,false,,south-indian,South Indian,🫓,,Dosa,
+Onion Butter Paneer Masala Dosa,200,,,,,false,false,,south-indian,South Indian,🫓,,Dosa,
+Paneer Dosa,220,,,,,false,false,,south-indian,South Indian,🫓,,Dosa,
+Paneer Butter Dosa,230,,,,,false,false,,south-indian,South Indian,🫓,,Dosa,
+Mysore Masala Dosa,130,,,,,true,true,,south-indian,South Indian,🫓,,Dosa,
+Mysore Butter Masala Dosa,140,,,,,false,true,,south-indian,South Indian,🫓,,Dosa,
+Mysore Onion Masala Dosa,170,,,,,false,true,,south-indian,South Indian,🫓,,Dosa,
+Mysore Onion Butter Masala Dosa,180,,,,,false,true,,south-indian,South Indian,🫓,,Dosa,
+Mysore Paneer Dosa,240,,,,,false,true,,south-indian,South Indian,🫓,,Dosa,
+Mysore Paneer Butter Dosa,250,,,,,false,true,,south-indian,South Indian,🫓,,Dosa,
+Plain Uttappam,80,,,,,false,false,,uttappam,Uttappam,🥞,,,
+Onion Uttappam,110,,,,,false,false,,uttappam,Uttappam,🥞,,,
+Tomato Uttappam,110,,,,,false,false,,uttappam,Uttappam,🥞,,,
+Cupsicum Uttappam,110,,,,,false,false,,uttappam,Uttappam,🥞,,,
+Onion Tomato Uttappam,130,,,,,false,false,,uttappam,Uttappam,🥞,,,
+Vegetable Uttappam,140,,,,,false,false,Onion,uttappam,Uttappam,🥞,,,
+Vegetable Paneer Uttappam,180,,,,,false,false,,uttappam,Uttappam,🥞,,,
+Paneer Uttappam,200,,,,,false,false,,uttappam,Uttappam,🥞,,,
+Mushroom Uttappam,140,,,,,false,false,,uttappam,Uttappam,🥞,,,
+Corn Uttappam,160,,,,,false,false,,uttappam,Uttappam,🥞,,,
+Idli Sambhar,80,,2 Pcs.,,,false,false,,idli-vada,Idli & Vada,🍚,,,
+Ghee Podi Idli,120,,,,,false,false,,idli-vada,Idli & Vada,🍚,,,
+Fried Idli,100,,2 Pcs.,,,false,false,,idli-vada,Idli & Vada,🍚,,,
+Vada Sambhar,100,,2 Pcs.,,,false,false,,idli-vada,Idli & Vada,🍚,,,
+Sambhar Rice,120,,,,,false,false,,south-indian-rice,SI Rice,🍛,South Indian Rice,,
+Curd Rice (Thayir Sadam),140,,,,,false,false,,south-indian-rice,SI Rice,🍛,South Indian Rice,,South Indian Combo|1 Mini Dosa + 1 Mini Uttappam + 1 Pc. Idli + 1 Pc. Vada|240
+Vegetable Burger,60,,,,,false,false,,pizza-burger,Pizza & Burger,🍕,,Burgers,
+Cheese Burger,90,,,,,false,false,,pizza-burger,Pizza & Burger,🍕,,Burgers,
+Vegetable Pizza,170,,,,,false,false,Onion; Cupsicum; Tomato,pizza-burger,Pizza & Burger,🍕,,Pizza,
+Onion Pizza,150,,,,,false,false,,pizza-burger,Pizza & Burger,🍕,,Pizza,
+Tomato Pizza,150,,,,,false,false,,pizza-burger,Pizza & Burger,🍕,,Pizza,
+Capsicum Pizza,150,,,,,false,false,,pizza-burger,Pizza & Burger,🍕,,Pizza,
+Margherita Pizza,170,,,,,true,false,,pizza-burger,Pizza & Burger,🍕,,Pizza,
+Italian Pizza,200,,,,,false,false,,pizza-burger,Pizza & Burger,🍕,,Pizza,
+Paneer Pizza,230,,,,,false,false,,pizza-burger,Pizza & Burger,🍕,,Pizza,
+Corn Pizza,200,,,,,false,false,,pizza-burger,Pizza & Burger,🍕,,Pizza,
+Corn Vegetable Pizza,220,,,,,false,false,,pizza-burger,Pizza & Burger,🍕,,Pizza,
+Mushroom Pizza,200,,,,,false,false,,pizza-burger,Pizza & Burger,🍕,,Pizza,
+Mushroom Vegetable Pizza,220,,,,,false,false,,pizza-burger,Pizza & Burger,🍕,,Pizza,Add Extra Cheese @ ₹ 40
+French Fries,110,,,,,false,false,,snacks,Snacks,🍟,,,
+Pav Bhaji,100,,,,,true,false,,snacks,Snacks,🍟,,,
+Extra Pav,20,,,,,false,false,,snacks,Snacks,🍟,,,

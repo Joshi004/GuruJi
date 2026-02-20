@@ -1,15 +1,33 @@
+import { useState, useEffect } from 'react';
 import { restaurantInfo } from '../data/menuData';
 
+const BG_IMAGE_URL = '/GuruJi/background.png';
+
 export default function Header() {
+  const [imgLoaded, setImgLoaded] = useState(false);
+
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => setImgLoaded(true);
+    img.onerror = () => setImgLoaded(false);
+    img.src = BG_IMAGE_URL;
+  }, []);
+
+  const backgroundStyle = imgLoaded
+    ? {
+        backgroundColor: '#4a2010',
+        backgroundImage: `url(${BG_IMAGE_URL})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }
+    : {
+        backgroundImage: 'linear-gradient(135deg, #4a2010 0%, #8b4513 40%, #6d3411 70%, #3e1a09 100%)',
+      };
+
   return (
     <header
       className="relative overflow-hidden"
-      style={{
-        backgroundColor: '#7c3a1e',
-        backgroundImage: 'url(/GuruJi/background.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
+      style={backgroundStyle}
     >
       {/* Dark overlay so white text stays readable over the wood texture */}
       <div className="absolute inset-0 bg-black/55" />

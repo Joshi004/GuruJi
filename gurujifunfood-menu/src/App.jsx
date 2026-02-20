@@ -14,6 +14,13 @@ export default function App() {
   const [liveMenu, setLiveMenu] = useState(menuData);
   const [activeId, setActiveId] = useState(menuData[0].id);
   const [searchQuery, setSearchQuery] = useState('');
+  const [collapsedSections, setCollapsedSections] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('gurujifunfood-collapsed')) || {};
+    } catch {
+      return {};
+    }
+  });
   const sectionRefs = useRef({});
   const isManualScrolling = useRef(false);
   const manualScrollTimer = useRef(null);
@@ -81,11 +88,27 @@ export default function App() {
     return results;
   }, [searchQuery, liveMenu]);
 
+  const toggleSection = useCallback((id) => {
+    setCollapsedSections((prev) => {
+      const next = { ...prev, [id]: !prev[id] };
+      localStorage.setItem('gurujifunfood-collapsed', JSON.stringify(next));
+      return next;
+    });
+  }, []);
+
   const handleTabClick = useCallback((id) => {
     isManualScrolling.current = true;
     clearTimeout(manualScrollTimer.current);
 
     setActiveId(id);
+
+    // Auto-expand the section if it is collapsed before scrolling to it
+    setCollapsedSections((prev) => {
+      if (!prev[id]) return prev;
+      const next = { ...prev, [id]: false };
+      localStorage.setItem('gurujifunfood-collapsed', JSON.stringify(next));
+      return next;
+    });
 
     const el = sectionRefs.current[id];
     if (el) {
@@ -138,6 +161,8 @@ export default function App() {
               <MenuSection
                 key={category.id}
                 category={category}
+                collapsed={!!collapsedSections[category.id]}
+                onToggle={() => toggleSection(category.id)}
                 ref={(el) => { sectionRefs.current[category.id] = el; }}
               />
             ))

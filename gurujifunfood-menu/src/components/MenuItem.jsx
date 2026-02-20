@@ -1,6 +1,12 @@
+import { checkAvailability } from '../data/menuData';
+
 export default function MenuItem({ item }) {
+  const availability = checkAvailability(item.availabilityStart, item.availabilityEnd);
+  const isUnavailable = !availability.available;
+  const hasOffer = Boolean(item.offerPrice);
+
   return (
-    <div className="flex items-start justify-between gap-3 py-3 border-b border-stone-100 last:border-0 group">
+    <div className={`flex items-start justify-between gap-3 py-3 border-b border-stone-100 last:border-0 group transition-opacity duration-200 ${isUnavailable ? 'opacity-60' : 'opacity-100'}`}>
       <div className="flex-1 min-w-0">
         <div className="flex items-start gap-1.5 flex-wrap">
           {/* Veg indicator dot */}
@@ -36,12 +42,30 @@ export default function MenuItem({ item }) {
             {item.qty}
           </span>
         )}
+
+        {/* Item-level availability indicator */}
+        {isUnavailable && (
+          <p className="mt-0.5 ml-5 flex items-center gap-1 text-xs text-stone-400 font-medium">
+            <svg className="w-3 h-3 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            {availability.label}
+          </p>
+        )}
       </div>
 
-      {/* Price — fixed width, right-aligned, tabular numerals */}
-      <span className="flex-shrink-0 w-14 text-right text-sm font-bold text-red-700 tabular-nums">
-        ₹{item.price}
-      </span>
+      {/* Price — with optional offer price */}
+      {hasOffer ? (
+        <div className="flex-shrink-0 w-16 text-right">
+          <span className="block text-xs text-stone-400 line-through tabular-nums">₹{item.price}</span>
+          <span className="block text-sm font-bold text-green-700 tabular-nums">₹{item.offerPrice}</span>
+        </div>
+      ) : (
+        <span className="flex-shrink-0 w-14 text-right text-sm font-bold text-red-700 tabular-nums">
+          ₹{item.price}
+        </span>
+      )}
     </div>
   );
 }
